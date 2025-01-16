@@ -391,6 +391,10 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        -- All installation needs to be explicit. It is very likely that LSP clients
+        -- might be provided by an external package manager
+        automatic_installation = false,
+        ensure_installed = false,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
